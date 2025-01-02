@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Counter from './Counter'
+import { FaTrash } from 'react-icons/fa'
 
 function CartCard({
     src, title, size, price,
@@ -11,7 +12,7 @@ function CartCard({
     price: number,
 }) {
     return (
-        <div className='flex p-10'>
+        <div className=' flex p-10'>
             <Image
                 src={src}
                 alt={title}
@@ -25,10 +26,24 @@ function CartCard({
                     <p className="mt-2 text-sm text-gray-500/80 leading-none line-clamp-1  font-ssemibold ">
                         size:&nbsp;<span>{size}</span>
                     </p>
-                    <Counter size={"sm"}/>
+                    <Counter size={"sm"} />
+
+                    <div className="lg:hidden flex my-3 flex-col  gap-5">
+                        <h3 className="text-sm font-semibold leading-none line-clamp-1 text-gray-500">
+                            <span>Price:&nbsp;</span>
+                            &#36;{price}
+                        </h3>
+                        <FaTrash className='text-base font-semibold leading-none line-clamp-1 text-red-600 cursor-pointer' />
+                    </div>
                 </div>
             </div>
-            <div className=""></div>
+            <div className="hidden lg:flex flex-col items-end gap-5">
+                <h3 className="text-sm font-semibold leading-none line-clamp-1 text-gray-500">
+                    <span>Price:&nbsp;</span>
+                    &#36;{price}
+                </h3>
+                <FaTrash className='text-base font-semibold leading-none line-clamp-1 text-red-600 cursor-pointer' />
+            </div>
 
         </div>
     )
